@@ -6,4 +6,4 @@ spring:
     uris: localhost:9200
 logging:
   level:
-    root: debug
+    root: info

@@ -152,11 +152,11 @@ public class EsTest {
     @Test
     public void termQuery() {
         TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("category", "手机");
-        NativeSearchQuery nativeSearchQuery = new NativeSearchQueryBuilder().withQuery(termQueryBuilder).build();
+        NativeSearchQuery nativeSearchQuery = new NativeSearchQuery(termQueryBuilder);
         SearchHits<Product> search = restTemplate.search(nativeSearchQuery, Product.class);
-        for (SearchHit<Product> productSearchHit : search) {
-            System.out.println(productSearchHit.getContent());
-        }
+        search.forEach(a -> {
+            System.out.println(a.getContent());
+        });
     }
 
     /**
